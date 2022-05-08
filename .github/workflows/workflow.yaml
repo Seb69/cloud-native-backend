@@ -29,4 +29,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Docker image
-        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        run: docker push docker.io/library/${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
