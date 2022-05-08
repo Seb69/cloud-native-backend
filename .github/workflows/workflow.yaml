@@ -29,8 +29,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker rename image
-        run: docker tag ${{github.event.repository.name }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}})
-        ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}})
+        run: docker tag ${{github.event.repository.name }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}}) ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}})
 
       - name: Push Docker image
         run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --all-tags
