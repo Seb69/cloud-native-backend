@@ -52,10 +52,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<image>
-						<name>docker.example.com/library/${project.artifactId}</name>
-						<publish>true</publish>
-					</image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
