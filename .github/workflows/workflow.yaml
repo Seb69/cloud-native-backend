@@ -29,4 +29,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Docker image
-        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(docker images ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --format {{.Tag}})
