@@ -19,7 +19,10 @@ jobs:
           cache: 'maven'
 
       - name: Build image with Maven
-        run: mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        run: mvn spring-boot:build-image
+
+      - name: Rename docker image
+        run: docker tag docker.io/library/micro-service:0.0.1-SNAPSHOT ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
