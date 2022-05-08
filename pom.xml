@@ -11,7 +11,7 @@
 	<groupId>ch.cloud.native</groupId>
 	<artifactId>cloud-native-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>micro-service</name>
+	<name>cloud-native-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>18</java.version>
