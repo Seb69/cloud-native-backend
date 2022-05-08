@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ch.cloud.native</groupId>
-	<artifactId>micro-service</artifactId>
+	<artifactId>cloud-native-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>micro-service</name>
 	<description>Demo project for Spring Boot</description>
