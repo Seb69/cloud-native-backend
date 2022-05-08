@@ -21,17 +21,17 @@ jobs:
       - name: Build image with Maven
         run: mvn spring-boot:build-image
 
+      - name: echo
+        run: docker images ${{github.event.repository.name }} --format {{.Tag}}
+
+      - name: Docker rename image
+        run: docker tag ${{github.event.repository.name }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}}) ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}})
+
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: echo
-        run: $(docker images ${{github.event.repository.name }} --format {{.Tag}})
-      - name: Docker rename image
-        run: docker tag ${{github.event.repository.name }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}}) ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(docker images ${{github.event.repository.name }} --format {{.Tag}})
-
       - name: Push Docker image
         run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} --all-tags
