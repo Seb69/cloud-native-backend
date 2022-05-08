@@ -34,7 +34,6 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Log
-        id: meta
         run: echo "${{ steps.meta.outputs.tags }} anf ${{ steps.meta.outputs.labels }}"
       - name: Push Docker image
         run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}
