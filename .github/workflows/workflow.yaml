@@ -1,4 +1,4 @@
-name: NativeK Backend
+name: Cloud Native Service
 
 on: [push]
 
